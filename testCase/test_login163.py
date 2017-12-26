@@ -41,7 +41,7 @@ class Login163(unittest.TestCase):
     def test_login163_001(self):
         u'''163登录测试 '''
         self.loginpage163.open(url,self.title,20)
-        self.loginpage163.login('18501342810','Yangchao520')
+        self.loginpage163.login('xxxx','xxxx')
         result = self.assertIn('185',self.homePage.get_userinfo())
         log.info(result)
         self.homePage.click_logout()
