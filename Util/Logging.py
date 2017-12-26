@@ -7,22 +7,32 @@
 # @Software: PyCharm
 
 import logging,time,os,threading
+import configRead
 
-pwd = os.getcwd()  #当前路径
+# pwd = os.getcwd()  #当前路径
 
-father_path = os.path.abspath(os.path.dirname(pwd)+os.path.sep+".")  #父路径
+# father_path = os.path.abspath(os.path.dirname(pwd)+os.path.sep+".")  #父路径
 
 # grader_path = os.path.abspath(os.path.dirname(pwd)+os.path.sep+"..") #二级路径
-print(father_path)
+# print(father_path)
 # log_path = os.path.join(father_path,"log")
 # 路径弄个绝对路径
-log_path = r"E:/studyMenu/PycharmProjects/webAutoTest/log/"
+# log_path = r"E:/studyMenu/PycharmProjects/webAutoTest/log/"
 
+nowTime = time.strftime("%Y%m%d%H%M%S")
+result = os.path.join(configRead.sysPath,"result")
+
+if not os.path.exists(result):
+    os.mkdir(result)
+
+logPath = os.path.join(result,nowTime)
+if not os.path.exists(logPath):
+    os.mkdir(logPath)
 
 class Log:
 
     def __init__(self):
-        self.logname = os.path.join(log_path,'%s.log' %time.strftime("%Y_%m_%d"))
+        self.logname = os.path.join(logPath,"out.log")
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         self.formatter = logging.Formatter('[%(asctime)s]-%(levelname)s:%(message)s')
@@ -50,8 +60,8 @@ class Log:
         elif level == 'error':
             self.logger.error(message)
 
-        self.logger.removeHandler(streamHandler)
         self.logger.removeHandler(fileHandler)
+        self.logger.removeHandler(streamHandler)
 
         fileHandler.close()
 

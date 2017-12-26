@@ -8,9 +8,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote import webelement
 import time
+import configRead
 from Util.Logging import MyLog as Log
 
-global_timeout = 30
+
+cr = configRead.configFileAction()
+global_timeout = int(cr.get("util","timeout"))
 
 log = Log.get_log()
 

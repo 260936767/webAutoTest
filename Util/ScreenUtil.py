@@ -6,7 +6,14 @@
 # @File    : ScreenUtil.py
 # @Software: PyCharm
 
-import time
+import time,os
+from Util import Logging as Log
+
+logPath = Log.logPath
+
+screenShotPath = os.path.join(logPath,"screenShot")
+if not os.path.exists(screenShotPath):
+    os.mkdir(screenShotPath)
 
 # 截图功能 使用装饰器功能
 class Screen(object):
@@ -21,7 +28,9 @@ class Screen(object):
                 return function(*args)
             except:
                 nowTime = time.strftime("%Y-%m-%d_%H_%M_%S")
-                self.driver.get_screenshot_as_file("%s.jpg" %nowTime)
+                fileName = os.path.join(screenShotPath,"%s.jpg" %nowTime)
+                self.driver.get_screenshot_as_file(fileName)
+
                 raise
         return inner
 

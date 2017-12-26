@@ -10,12 +10,13 @@ import HTMLTestRunner
 import time
 import unittest
 import os
+from Util import Logging as Log
 
 from testCase import test_login163
 
 case_path = os.path.join(os.getcwd(),"testCase")
 
-report_path = os.path.join(os.getcwd(),"report")
+report_path = Log.logPath
 
 def all_case():
     discover = unittest.defaultTestLoader.discover(case_path,
@@ -31,14 +32,13 @@ if __name__ =="__main__":
     suite.addTest(test_login163.Login163("test_login163_001"))
 
     now_time = time.strftime("%Y-%m-%d_%H_%M_%S",time.localtime())
-    report_file = report_path+"/report"+now_time+".html"
-    fp = open(report_file,"wb")
+    report_file_name = report_path+"/report "+now_time+".html"
+    fp = open(report_file_name,"wb")
 
     runner = HTMLTestRunner.HTMLTestRunner(fp,
-                                  verbosity=2,
-                                  title=u"首页登录测试",
-                                  description=u"登录成功，登录失败测试")
+                                  verbosity=1,
+                                  title=u"报告标题",
+                                  description=u"报告描述")
 
     runner.run(suite)
-
     fp.close()

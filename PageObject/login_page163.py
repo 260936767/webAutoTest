@@ -9,8 +9,6 @@
 from Util.SeleniumUtil import CommonAction
 from selenium.webdriver.common.by import  By
 
-url = "http://mail.163.com/"
-
 class Login_page_163(CommonAction):
 
     email_login_link_loc = (By.XPATH,"//*[@id='lbNormal']")

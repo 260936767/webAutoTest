@@ -6,25 +6,24 @@
 # @File    : test_login163.py
 # @Software: PyCharm
 
-from PageObject.login_page163 import url,Login_page_163
+from PageObject.login_page163 import Login_page_163
 from PageObject.Home.home_page import HomePage
 from Util.SeleniumUtil import browser
 from Util.ScreenUtil import Screen
 import unittest,time,HTMLTestRunner,os
 from Util.Logging import MyLog as Log
+import configRead
 
 # 日志和浏览器驱动
 log = Log.get_log()
 driver = browser()
 
-pwd = os.getcwd()  #当前路径
-
-# father_path = os.path.abspath(os.path.dirname(pwd)+os.path.sep+".")  #父路径
-# report_path = os.path.join(father_path, "report")
-# log.info(report_path)
-
+configAction = configRead.configFileAction()
+url = configAction.get("163","url")
 
 class Login163(unittest.TestCase):
+
+
 
     def setUp(self):
         self.loginpage163 = Login_page_163(driver)
@@ -36,14 +35,12 @@ class Login163(unittest.TestCase):
         driver.quit()
 
 
-
     @Screen(driver)
     def test_login163_001(self):
         u'''163登录测试 '''
         self.loginpage163.open(url,self.title,20)
-        self.loginpage163.login('xxxx','xxxx')
-        result = self.assertIn('185',self.homePage.get_userinfo())
-        log.info(result)
+        self.loginpage163.login('18501342810','Yangchao5201')
+        self.assertIn('185',self.homePage.get_userinfo())
         self.homePage.click_logout()
 
 # if __name__ == "__main__":
