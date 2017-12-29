@@ -1,0 +1,46 @@
+[2017-12-29 14:51:57,352]-INFO:setUp
+[2017-12-29 14:52:00,295]-INFO:打开url:[http://mail.163.com/]
+[2017-12-29 14:52:01,613]-INFO:点击元素：[('xpath', "//*[@id='lbNormal']")]
+[2017-12-29 14:52:01,615]-INFO:跳转frame：[ x-URS-iframe ]
+[2017-12-29 14:52:01,933]-INFO:元素：[('xpath', "//input[@name='email']")] 输入内容：[XXXXXXXXX]
+[2017-12-29 14:52:02,491]-INFO:元素：[('xpath', "//input[@name='password']")] 输入内容：[XXXXXXXXXX]
+[2017-12-29 14:52:02,664]-INFO:点击元素：[('xpath', "//a[@id='dologin']")]
+[2017-12-29 14:52:23,488]-INFO:tearDown
+[2017-12-29 14:52:23,492]-WARNING:用例test_login163_001 (testCase.test_login163.Login163)第1次重新执行
+[2017-12-29 14:52:23,493]-INFO:setUp
+[2017-12-29 14:52:23,999]-INFO:打开url:[http://mail.163.com/]
+[2017-12-29 14:52:24,122]-INFO:点击元素：[('xpath', "//*[@id='lbNormal']")]
+[2017-12-29 14:52:24,124]-INFO:跳转frame：[ x-URS-iframe ]
+[2017-12-29 14:52:24,555]-INFO:tearDown
+[2017-12-29 14:52:24,666]-WARNING:用例test_login163_001 (testCase.test_login163.Login163)第2次重新执行
+[2017-12-29 14:52:24,667]-INFO:setUp
+[2017-12-29 14:52:24,843]-INFO:打开url:[http://mail.163.com/]
+[2017-12-29 14:52:24,949]-INFO:点击元素：[('xpath', "//*[@id='lbNormal']")]
+[2017-12-29 14:52:24,950]-INFO:跳转frame：[ x-URS-iframe ]
+[2017-12-29 14:52:25,346]-INFO:tearDown
+[2017-12-29 14:52:25,348]-INFO:setUp
+[2017-12-29 14:52:25,350]-INFO:test_login163_002
+[2017-12-29 14:52:46,214]-INFO:tearDown
+[2017-12-29 14:52:46,216]-WARNING:用例test_login163_002 (testCase.test_login163.Login163)第1次重新执行
+[2017-12-29 14:52:46,218]-INFO:setUp
+[2017-12-29 14:52:46,219]-INFO:test_login163_002
+[2017-12-29 14:53:07,075]-INFO:tearDown
+[2017-12-29 14:53:07,077]-WARNING:用例test_login163_002 (testCase.test_login163.Login163)第2次重新执行
+[2017-12-29 14:53:07,079]-INFO:setUp
+[2017-12-29 14:53:07,080]-INFO:test_login163_002
+[2017-12-29 14:53:27,966]-INFO:tearDown
+[2017-12-29 14:53:27,969]-INFO:setUp
+[2017-12-29 14:53:27,971]-INFO:test_login163_003
+[2017-12-29 14:53:48,868]-INFO:tearDown
+[2017-12-29 14:53:48,884]-WARNING:用例test_login163_003 (testCase.test_login163.Login163)第1次重新执行
+[2017-12-29 14:53:48,886]-INFO:setUp
+[2017-12-29 14:53:48,887]-INFO:test_login163_003
+[2017-12-29 14:54:09,811]-INFO:tearDown
+[2017-12-29 14:54:09,813]-WARNING:用例test_login163_003 (testCase.test_login163.Login163)第2次重新执行
+[2017-12-29 14:54:09,815]-INFO:setUp
+[2017-12-29 14:54:09,817]-INFO:test_login163_003
+[2017-12-29 14:54:30,580]-INFO:tearDown
+[2017-12-29 14:54:30,582]-INFO:setUp
+[2017-12-29 14:54:30,584]-INFO:test_login163_004
+[2017-12-29 14:54:30,585]-INFO:driver 退出
+[2017-12-29 14:54:31,879]-INFO:tearDown
