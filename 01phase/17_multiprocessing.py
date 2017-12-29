@@ -48,11 +48,11 @@
 # pipe = multiprocessing.Pipe()
 #
 # def proc1(pipe):
-#     pipe.send('hello')
+#     pipe.Send('hello')
 #     print('proc1 rec:'pipe.recv())
 #
 # def proc2(pipe):
-#     pipe.send('hello,too')
+#     pipe.Send('hello,too')
 #     print('proc2 rec:'pipe.recv())
 #
 # p1 = multiprocessing.Process(target=proc1,args=(pipe[0],))

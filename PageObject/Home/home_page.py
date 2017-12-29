@@ -18,11 +18,12 @@ class HomePage(CommonAction):
     userinfo_loc = (By.XPATH,"//*[@id = 'spnUid']")
 
     logout_loc = (By.XPATH,"//*[@id = '_mail_component_41_41']/a[1]")
-
-    def get_userinfo(self):
-        userinfo = self.get_text(self.userinfo_loc)
-        log.info(userinfo)
-        return userinfo
+    # logout_loc = (By.XPATH,"//*[@id = '_like")
+    #
+    # def get_userinfo(self):
+    #     userinfo = self.get_text(self.userinfo_loc)
+    #     log.info(userinfo)
+    #     return userinfo
 
     def click_logout(self):
         self.click(self.logout_loc)

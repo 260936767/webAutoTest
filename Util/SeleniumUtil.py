@@ -70,23 +70,28 @@ class CommonAction(object):
         except Exception as msg:
             log.error(u"错误：[%s]" % msg)
 
-    def find_element(self,locator,timeout = global_timeout):
+    def __find_element(self,locator,timeout = global_timeout):
 
         #参数说明：驱动，超时时间，轮循查询时间
         element = WebDriverWait(self.driver,timeout,1).until(EC.presence_of_element_located(locator))
-        # element = WebDriverWait(self.driver,timeout,1).until(lambda x:x.find_element_by_id('').is_displayed())
+
+        # element = WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id("someId"))
+        # is_disappeared = WebDriverWait(driver, 30, 1, (ElementNotVisibleException)).until_not(
+        #     lambda x: x.find_element_by_id("someId").is_displayed())
+
         if element is None:
             log.warning(u"未能定位到元素，locator:[%s]" %str(locator))
             # print(u"未能定位到元素，locator:%s" %locator)
         return element
 
     def find_elements(self,locator,timeout = global_timeout):
-        element = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_all_elements_located(locator))
-        return element
+        elements = WebDriverWait(self.driver, timeout, 1).until(EC.presence_of_all_elements_located(locator))
+        if elements is None:
+            log.warning(u"未能定位到元素，locator:[%s]" %str(locator))
+        return elements
 
     def click(self,locator):
-
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
         element.click()
         log.info(u"点击元素：[%s]" %str(locator))
 
@@ -94,11 +99,11 @@ class CommonAction(object):
     def submit(self, locator):
 
         # log.info(u"表单提交：[%s]" %(locator))
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
         element.submit()
 
     def send_keys(self,locator,text):
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
         element.clear()
         element.send_keys(text)
         log.info(u"元素：[%s] 输入内容：[%s]" %(locator,text))
@@ -202,13 +207,13 @@ class CommonAction(object):
 
     def get_text(self,locator,timeout = global_timeout):
         '''获取元素文本值'''
-        element = WebDriverWait(self.driver,timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
         log.info(u"获取元素[ "+str(locator)+" ]文本值")
         return element.text
 
     def get_attribute(self,name,locator,timeout = global_timeout):
         '''获取属性name的值'''
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
         log.info(u"获取元素["+str(locator)+"]的["+str(name)+"]属性值")
         return element.get_attribute(name)
 
@@ -220,7 +225,7 @@ class CommonAction(object):
 
     def js_focus_element(self,locator):
         '''焦点在某元素'''
-        target = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        target = self.__find_element(locator)
         log.info(u"焦点元素:[%s]" %locator)
         self.driver.execute_script("arguments[0].scrollIntoView();",target)
 
@@ -240,42 +245,42 @@ class CommonAction(object):
     '''选中/取消选中'''
     def select_by_index(self,locator,index):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).select_by_index(index)
         log.info(u"选中[%s]元素" %index)
 
     def select_by_value(self,locator,value):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).select_by_value(value)
         log.info(u"选中[%s]元素" % value)
 
     def select_by_text(self,locator,text):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).select_by_visible_text(text)
         log.info(u"选中[%s]元素" % text)
 
     def deselect_by_index(self,locator,index):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).deselect_by_index(index)
         log.info(u"取消选中[%s]元素" % index)
 
     def deselect_by_value(self,locator,value):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).deselect_by_value(value)
         log.info(u"取消选中[%s]元素" % value)
 
     def deselect_by_text(self,locator,text):
 
-        element = WebDriverWait(self.driver,global_timeout,1).until(EC.presence_of_element_located(locator))
+        element = self.__find_element(locator)
 
         Select(element).deselect_by_visible_text(text)
         log.info(u"取消选中[%s]元素" % text)

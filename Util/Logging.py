@@ -20,6 +20,7 @@ import configRead
 # log_path = r"E:/studyMenu/PycharmProjects/webAutoTest/log/"
 
 nowTime = time.strftime("%Y%m%d%H%M%S")
+
 result = os.path.join(configRead.sysPath,"result")
 
 if not os.path.exists(result):
@@ -28,6 +29,12 @@ if not os.path.exists(result):
 logPath = os.path.join(result,nowTime)
 if not os.path.exists(logPath):
     os.mkdir(logPath)
+
+# 截图保存文件路径
+screenShotPath = os.path.join(logPath, "screenShot")
+if not os.path.exists(screenShotPath):
+    os.mkdir(screenShotPath)
+
 
 class Log:
 

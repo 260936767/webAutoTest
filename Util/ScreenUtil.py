@@ -9,11 +9,7 @@
 import time,os
 from Util import Logging as Log
 
-logPath = Log.logPath
-
-screenShotPath = os.path.join(logPath,"screenShot")
-if not os.path.exists(screenShotPath):
-    os.mkdir(screenShotPath)
+screenShotPath = Log.screenShotPath
 
 # 截图功能 使用装饰器功能
 class Screen(object):
@@ -23,14 +19,14 @@ class Screen(object):
 
     def __call__(self, function):
 
-        def inner(*args):
+        def inner(*args,**kwargs):
             try:
-                return function(*args)
+                return function(*args,**kwargs)
             except:
                 nowTime = time.strftime("%Y-%m-%d_%H_%M_%S")
                 fileName = os.path.join(screenShotPath,"%s.jpg" %nowTime)
                 self.driver.get_screenshot_as_file(fileName)
-
                 raise
+
         return inner
 

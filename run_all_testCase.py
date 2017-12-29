@@ -11,8 +11,10 @@ import time
 import unittest
 import os
 from Util import Logging as Log
+from Util import SuiteUtil
 
 from testCase import test_login163
+
 
 case_path = os.path.join(os.getcwd(),"testCase")
 
@@ -28,17 +30,20 @@ def all_case():
 
 if __name__ =="__main__":
 
-    suite = unittest.TestSuite()
+    suite = SuiteUtil.Suite()
     suite.addTest(test_login163.Login163("test_login163_001"))
+    suite.addTest(test_login163.Login163("test_login163_002"))
+    suite.addTest(test_login163.Login163("test_login163_003"))
+    suite.addTest(test_login163.Login163("test_login163_004"))
 
     now_time = time.strftime("%Y-%m-%d_%H_%M_%S",time.localtime())
     report_file_name = report_path+"/report "+now_time+".html"
     fp = open(report_file_name,"wb")
 
     runner = HTMLTestRunner.HTMLTestRunner(fp,
-                                  verbosity=1,
-                                  title=u"报告标题",
-                                  description=u"报告描述")
+                                               verbosity=2,
+                                               title="title",
+                                               description="description")
 
     runner.run(suite)
     fp.close()
